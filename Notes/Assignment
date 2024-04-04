@@ -1,0 +1,28 @@
+####################################################################################################
+---:ASSIGNMENT:---
+GOAL:
+    - Machine Code (hex, no '0x') -> instruction
+    - Formats:
+        - add, and, or, slt, sub
+            - Mnemonic {opcode: XX, rs: XX, rt: XX, rd: XX, shmt: XX, funct: XX}
+        - addiu, andi, beq, bne, lui, lw, ori, sw
+            - Mnemonic {opcode: XX, rs(base): XX, rt: XX, immediate(offset): XXXX}
+        - j (J-Type instructions)
+            - Mnemonic {opcode: XX, index: XXXXXXX}
+        - syscall
+            - Mnemonic {opcode: XX, code: 000000, funct: XX}
+        - Example:
+            - $> java -jar PROG2_Milestone1.jar 26fb003e
+                addiu {opcode: 09, rs(base): 17, rt: 1b, immediate(offset): 003e}
+REQUIREMENTS:
+    - 'mnemonic' is the instruction mnemonic (e.g., 'add') all in lowercase
+    - XX' is a 2-digit hexadecimal value corresponding to the correct component of the instruction
+    - The immediate(offset) component of I-Type instructions will have a 4-digit value
+    - The index component of J-Type instructions will have a 7-digit value
+    - The rs(base) value for lui will always be 00
+    - The code value for syscall will always be 000000
+    - !Test cases are provided!
+SUBMISSION:
+    - Zip JAR file ... NO BREAKPOINTS
+    - newline after output line
+

@@ -1,0 +1,10 @@
+####################################################################################################
+---:PROCEDURE:---
+[1] Turn hex instruction into binary
+
+[2] Use opcode & func field to figure out the instruction
+
+[3] Return the appropriate object
+
+
+
