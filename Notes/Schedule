@@ -1,16 +1,17 @@
 ####################################################################################################
 ---:SCHEDULE:---
-] DESIGN: Thu./Fri
-    - 2 Days
+] DESIGN: Thu./Fri/Sat.
+    - 3 Days
     - Notes + Method Description.
-] TESTING: Sat./Sun./Mon./Tue
+] TESTING: Sun./Mon./Tue./Wed.
     - 4 Days
     - Write Tests Based on Design Document
         - Test for “full” functionality (looking for all possible cases based on what the method "should" do/ "should not" do)
-] PASS TESTS: Wed./Thu./Fri
+] PASS TESTS: Thu./Fru./Sat
     - 3 Days
     - Write Code to pass tests
-] GRADING Sat./Sun
+] GRADING Sun./Mon
     - 2 Days
     - Import fuzzy grader & pass tests
     - Submit JAR w/o breakpointss.
+] Buffer day ... Tue.
