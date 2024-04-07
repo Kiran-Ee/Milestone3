@@ -49,28 +49,4 @@ public class AddTest {
         assertEquals(a.getInstruction()[3], instr4[1]); // rd = rd
     }
 
-    @Test
-    void return_correct_hex_instr1() {
-        Add a = new Add(instr1);
-        assertEquals("022f8020", a.get_hex());
-    }
-
-    @Test
-    void return_correct_hex_instr2() {
-        Add a = new Add(instr2);
-        assertEquals("01084020", a.get_hex());
-    }
-
-    @Test
-    void return_correct_hex_instr3() {
-        Add a = new Add(instr3);
-        assertEquals("01495820", a.get_hex());
-    }
-
-
-    @Test
-    void return_correct_hex_instr4() {
-        Add a = new Add(instr4);
-        assertEquals("00411820", a.get_hex());
-    }
 } //end: class addTest

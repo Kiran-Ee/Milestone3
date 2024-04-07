@@ -1,10 +1,13 @@
 ####################################################################################################
 ---:PROCEDURE:---
-[1] Turn hex instruction into binary
+[1] Turn hex instruction into binary:
+    - "26fb003e"
 
 [2] Use opcode & func field to figure out the instruction
+    - "addiu"
 
-[3] Return the appropriate object
+[3] Return machine code format of the corresponding operation
+    - "addiu {opcode: 09, rs(base): 17, rt: 1b, immediate(offset): 003e}"
 
 
 
