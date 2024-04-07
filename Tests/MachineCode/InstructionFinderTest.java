@@ -53,8 +53,8 @@ class InstructionFinderTest {
     @Test
     void setHex4() {
         assertEquals(instr4, gmc.instruction_finder(hex4));
-    }
 
+    }
     @Test
     void setHex5() {
         assertEquals(instr5, gmc.instruction_finder(hex5));

@@ -8,4 +8,8 @@ public class GeneralMachineCode {
     public String instruction_finder(String hex){
         return null;
     }
+
+    public String rType_finder(String hex) {
+        return null;
+    }
 }
