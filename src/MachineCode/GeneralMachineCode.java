@@ -16,4 +16,8 @@ public class GeneralMachineCode {
     public String instruction_factory(String hex, String op_type){
         return null;
     }
+
+    public String hex_to_binary(String hex) {
+        return null;
+    }
 }
