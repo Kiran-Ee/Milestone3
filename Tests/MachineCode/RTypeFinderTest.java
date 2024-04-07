@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/*
+/* instructions using the same "op-code"
 add x
 and x
 or x

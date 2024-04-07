@@ -12,4 +12,8 @@ public class GeneralMachineCode {
     public String rType_finder(String hex) {
         return null;
     }
+
+    public String instruction_factory(String hex, String op_type){
+        return null;
+    }
 }
