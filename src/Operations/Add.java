@@ -13,7 +13,7 @@ public class Add implements Operation {
 
 
     // Convert the binary String into hex & set variables appropriately ...
-    public Add(String[] cleaned_instructions)
+    public Add(String binary)
     {
         // TODO
     }

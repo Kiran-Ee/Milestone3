@@ -28,6 +28,12 @@ public class Addiu implements Operation{
 
         return com_hex;
     }
+
+    @Override
+    public String get_mnenomic() {
+        return null;
+    }
+
     public String[] getInstruction()
     {
         return new String[]{ADDIU, rs, rt, immediate};
