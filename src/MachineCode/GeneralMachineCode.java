@@ -5,7 +5,7 @@ public class GeneralMachineCode {
         return null;
     }
 
-    public String instruction_finder(String hex){
+    public String instruction_finder(String hex) {
         return null;
     }
 
@@ -13,7 +13,7 @@ public class GeneralMachineCode {
         return null;
     }
 
-    public String instruction_factory(String hex, String op_type){
+    public String instruction_factory(String hex, String op_type) {
         return null;
     }
 
@@ -27,15 +27,8 @@ public class GeneralMachineCode {
         }
         return paddedBi.toString();
     }
-    public String pad_binary(String binary_instr, int num_pad){
-        // Pad the binary instruction with leading zeros
-        StringBuilder paddedBinary = new StringBuilder(binary_instr);
-        while (paddedBinary.length() < num_pad) {
-            paddedBinary.insert(0, '0');
-        }
-        return paddedBinary.toString();
-    }
-    public static String bin_toHexImmediate(String bin_imm, boolean signed){
+
+    public static String bin_toHexImmediate(String bin_imm, boolean signed) {
         int decimal = Integer.parseInt(bin_imm, 2);
 
         String hex = Integer.toHexString(decimal);
