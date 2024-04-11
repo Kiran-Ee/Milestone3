@@ -21,31 +21,23 @@ public class GeneralMachineCode {
         int decimal = Integer.parseInt(hex, 16);
         String binary = Integer.toBinaryString(decimal);
         int padding = 32 - binary.length();
-        StringBuilder paddedBi = new StringBuilder(binary);
-        for (int i = 0; i < padding; i++) {
-            paddedBi.insert(0, '0');
-        }
-        return paddedBi.toString();
+        binary = pad_binary(binary, padding);
+        return binary;
     }
 
-    public static String bin_toHexImmediate(String bin_imm, boolean signed) {
+    // TODO: this method probs needs to handle "unsigned" since java's methods automatically interpret as "signed" ... use "General"'s method bc very similar.
+    public static String bin_toHexImmediate(String bin_imm) {
         int decimal = Integer.parseInt(bin_imm, 2);
 
         String hex = Integer.toHexString(decimal);
 
-        int padding = 4 - hex.length();
-        StringBuilder paddedHex = new StringBuilder(hex);
-        for (int i = 0; i < padding; i++) {
-            paddedHex.insert(0, '0');
-        }
-        // Add the "0x" prefix if needed
-        if (!signed) {
-            paddedHex.insert(0, "0x");
-        }
-        return paddedHex.toString();
+        int padding = 8 - hex.length();
+        hex = pad_binary(hex, padding);
+
+        return hex;
     }
 
-    public String pad_binary(String binary_instr, int num_padding) {
+    public static String pad_binary(String binary_instr, int num_padding) {
         for (int i = 0; i < num_padding; i++) {
             binary_instr = "0" + binary_instr;
         }
