@@ -1,6 +1,5 @@
 package Operations;
 import MachineCode.GeneralMachineCode;
-import Util.General;
 
 public class Slt implements Operation{
     private final String opcode = "000000";
@@ -13,9 +12,9 @@ public class Slt implements Operation{
     public Slt(String binary){
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 4) {
-            this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0], false);
-            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1], false);
-            this.rd = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2], false);
+            this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
+            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1]);
+            this.rd = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2]);
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }

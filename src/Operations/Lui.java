@@ -12,8 +12,8 @@ public class Lui implements Operation{
     public Lui(String binary) {
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 2) {
-            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0], false);
-            this.immediate = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1], false);
+            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
+            this.immediate = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1]);
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }

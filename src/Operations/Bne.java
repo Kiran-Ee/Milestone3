@@ -1,10 +1,6 @@
 package Operations;
 
-
 import MachineCode.GeneralMachineCode;
-
-
-import java.util.LinkedHashMap;
 
 public class Bne implements Operation{
     private final String opcode = "000101";
@@ -15,9 +11,9 @@ public class Bne implements Operation{
     public Bne(String binary){
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
-            this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0], false);
-            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1], false);
-            this.offset = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2], false);
+            this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
+            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1]);
+            this.offset = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2]);
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }

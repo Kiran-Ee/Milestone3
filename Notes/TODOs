@@ -1,10 +1,12 @@
 ####################################################################################################
 ---:TODOs:---
     Kiran:
-    - 1] Sat - Walk through design document, assign methods
-    - 2] Sun./Mon./Tue./Wed - Write tests for "General"
+    - x1] Sat - Walk through design document, assign methods
+    - x2] Sun./Mon./Tue./Wed - Write tests for "General"
+    - 3] Thu./Fri./Sat. - Pass tests
+    - 4] Sun. add grader and debug
     Tanja:
-    - 1] Sat - Add all instructions to design document (like HW1 -having the machine code format in the doc will help-,
+    - x1] Sat - Add all instructions to design document (like HW1 -having the machine code format in the doc will help-,
          ... but based on the template in HW3)
     - 2] Sun./Mon./Tue./Wed - Write tests for Operations: use "https://www.eg.bucknell.edu/~csci320/mips_web/" for hex.
 

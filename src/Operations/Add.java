@@ -1,17 +1,9 @@
 package Operations;
 import MachineCode.GeneralMachineCode;
 
-
 import org.ietf.jgss.GSSName;
 
 public class Add implements Operation {
-//    private final String SPECIAL = "000000";
-//    private String rs = "";
-//    private String rt = "";
-//    private String rd = "";
-//    private final String ZERO = "00000";
-//    private final String FUNC = "100000";
-
     private final String opcode;
     private String rs;
     private String rt;
@@ -25,10 +17,10 @@ public class Add implements Operation {
     {
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3 || parsedInstruction.length == 4) {
-            this.opcode = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0], false); //assume not signed
-            this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1], false);
-            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2], false);
-            this.rd = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[3], false);
+            this.opcode = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]); //assume not signed
+            this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1]);
+            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2]);
+            this.rd = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[3]);
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }

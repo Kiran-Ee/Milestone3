@@ -17,12 +17,12 @@ LW rt, offset(base)
     [LW(6: 100011), base(5), rt(5), offset(16)]
 Desc: rt <--memory[base+offset]
      */
-    public Lw(String binary){
+    public Lw(String binary) {
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
-            this.base = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0], false);
-            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1], false);
-            this.offset = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2], true); // Signed immediate
+            this.base = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
+            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1]);
+            this.offset = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2]); // Signed immediate
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }

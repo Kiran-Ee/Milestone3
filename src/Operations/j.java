@@ -10,7 +10,7 @@ public class j implements Operation {
     public j(String binary){
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 1) {
-            this.instr_index = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0], false);
+            this.instr_index = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }

@@ -18,9 +18,9 @@ public class Addiu implements Operation{
 //        immediate = cleaned_instructions[3];
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
-            this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0], false);
-            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1], false);
-            this.immediate = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2] + parsedInstruction[3], false);
+            this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
+            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1]);
+            this.immediate = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2] + parsedInstruction[3]);
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }
