@@ -2,18 +2,42 @@ package MachineCode;
 
 public class GeneralMachineCode {
     public String hex_to_mnenomic(String hex) {
-        return null;
+        String bin = hex_to_binary(hex);
+        String op_type = instruction_finder(bin);
+        return (instruction_factory(bin, op_type));
     }
 
-    public String instruction_finder(String hex) {
-        return null;
+    public String instruction_finder(String bin) {
+        String op_code = bin.substring(0, 6);
+        return switch (op_code) {
+            case "000000" -> rType_finder(bin);
+            case "001001" -> "addiu";
+            case "000100" -> "beq";
+            case "000101" -> "bne";
+            case "000010" -> "j";
+            case "001111" -> "lui";
+            case "100011" -> "lw";
+            case "001101" -> "ori";
+            case "101011" -> "sw";
+            default -> "Unknown instruction";
+        };
     }
 
-    public String rType_finder(String hex) {
-        return null;
+    // Must be called by a op_code = R type in instruction_finder
+    public String rType_finder(String bin) {
+        String func = bin.substring(32-6);
+        return switch (func) {
+            case "100000" -> "add";
+            case "100100" -> "and";
+            case "100101" -> "or";
+            case "101010" -> "slt";
+            case "100010" -> "sub";
+            case "001100" -> "syscall";
+            default -> "unknown rType";
+        };
     }
 
-    public String instruction_factory(String hex, String op_type) {
+    public String instruction_factory(String bin, String op_type) {
         return null;
     }
 
