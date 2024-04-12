@@ -1,5 +1,7 @@
 package MachineCode;
 
+import Operations.*;
+
 public class GeneralMachineCode {
     public String hex_to_mnenomic(String hex) {
         String bin = hex_to_binary(hex);
@@ -38,7 +40,25 @@ public class GeneralMachineCode {
     }
 
     public String instruction_factory(String bin, String op_type) {
-        return null;
+        Operation op_obj = switch (op_type) {
+            case "add" -> new Add(bin);
+            case "addiu" -> new Addiu(bin);
+            case "and" -> new And(bin);
+            case "andi" -> new AndI(bin);
+            case "beq" -> new Beq(bin);
+            case "bne" -> new Bne(bin);
+            case "j" -> new j(bin);
+            case "lui" -> new Lui(bin);
+            case "lw" -> new Lw(bin);
+            case "or" -> new Or(bin);
+            case "ori" -> new Ori(bin);
+            case "slt" -> new Slt(bin);
+            case "sub" -> new Sub(bin);
+            case "sw" -> new Sw(bin);
+            case "syscall" -> new Syscall();
+            default -> throw new IllegalArgumentException("Entered invalid operation to instruction_factory");
+        };
+        return op_obj.get_mnenomic();
     }
 
     public String hex_to_binary(String hex) {
