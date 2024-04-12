@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InstructionFinderTest {
     GeneralMachineCode gmc = new GeneralMachineCode();
+    // addiu, bne, lui, lw, and, or, blah
 
     String bin1 = "00000010101101001110100000100010";
     String bin2 = "00000000000000000000000000001100";
@@ -20,6 +21,13 @@ class InstructionFinderTest {
     String bin11 = "00110101111001010000000010101110";
     String bin12 = "00000000000000000000000000001100";
     String bin13 = "00000000110111111110000000101010";
+    String bin14 = "00100100111010100000000000000001"; //addiu t2 a3 0x1
+    String bin15 = "00010101001010101010111100010000"; //bne t1, t2 0xAF10
+    String bin16 = "00111100000000110000100110011001"; //lui v1 0x999
+    String bin17 = "10001100011001100000000000000001"; //lw a2 0x1 v1
+    String bin18 = "00000001001010100100100000100100"; //and t1 t1 t2
+    String bin19 = "00000000110000100010100000100101"; //or a1 a2 v0
+    String bin20 = "10111110111110101110101110011001"; //random
 
     String instr1 = "sub";
     String instr2 = "syscall";
@@ -34,6 +42,13 @@ class InstructionFinderTest {
     String instr11 = "ori";
     String instr12 = "syscall";
     String instr13 = "slt";
+    String instr14 = "addiu"; //addiu t2 a3 0x1
+    String instr15 = "bne"; //bne t1, t2 0xAF10
+    String instr16 = "lui"; //lui v1 0x999
+    String instr17 = "lw"; //lw a2 0x1 v1
+    String instr18 = "and"; //and t1 t1 t2
+    String instr19 = "or"; //or a1 a2 v0
+    String instr20 = "Unknown instruction"; //random
 
     @Test
     void setBin1() {
@@ -98,5 +113,40 @@ class InstructionFinderTest {
     @Test
     void setBin13() {
         assertEquals(instr13, gmc.instruction_finder(bin13));
+    }
+
+    @Test
+    void setBin14() {
+        assertEquals(instr14, gmc.instruction_finder(bin14));
+    }
+
+    @Test
+    void setBin15() {
+        assertEquals(instr15, gmc.instruction_finder(bin15));
+    }
+
+    @Test
+    void setBin16() {
+        assertEquals(instr16, gmc.instruction_finder(bin16));
+    }
+
+    @Test
+    void setBin17() {
+        assertEquals(instr17, gmc.instruction_finder(bin17));
+    }
+
+    @Test
+    void setBin18() {
+        assertEquals(instr18, gmc.instruction_finder(bin18));
+    }
+
+    @Test
+    void setBin19() {
+        assertEquals(instr19, gmc.instruction_finder(bin19));
+    }
+
+    @Test
+    void setBin20() {
+        assertEquals(instr20, gmc.instruction_finder(bin20));
     }
 }

@@ -33,7 +33,7 @@ public class GeneralMachineCode {
             case "101010" -> "slt";
             case "100010" -> "sub";
             case "001100" -> "syscall";
-            default -> "unknown rType";
+            default -> "Unknown instruction";
         };
     }
 
