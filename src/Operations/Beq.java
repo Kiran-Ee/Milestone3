@@ -1,9 +1,5 @@
 package Operations;
 
-import Util.General;
-
-import static Util.General.register_to_binary;
-
 public class Beq implements Operation{
     private final String opcode = "000100";
     private String rs = "";

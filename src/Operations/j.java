@@ -1,7 +1,7 @@
 package Operations;
 
 import MachineCode.GeneralMachineCode;
-import Util.General;
+
 
 public class j implements Operation {
     private String opcode = "000010"; //opcode for j instruction

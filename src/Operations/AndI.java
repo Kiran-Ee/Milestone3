@@ -1,6 +1,6 @@
 package Operations;
 
-import Util.General;
+
 
 public class AndI implements Operation{
     private final String opcode = "001100";

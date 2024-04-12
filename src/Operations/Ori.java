@@ -1,7 +1,6 @@
 package Operations;
 
 import MachineCode.GeneralMachineCode;
-import Util.General;
 
 public class Ori implements Operation{
     private final String opcode = "001101";
@@ -9,7 +8,7 @@ public class Ori implements Operation{
     private String rt = "";
     private String immediate = "";
 
-    public Ori(String[] binary){
+    public Ori(String binary){
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
             this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0], false);

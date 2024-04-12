@@ -1,7 +1,7 @@
 package Operations;
 
 import MachineCode.GeneralMachineCode;
-import Util.General;
+
 
 public class Lui implements Operation{
     private final String opcode = "001111";
@@ -9,7 +9,7 @@ public class Lui implements Operation{
     private String rt = "";
     private String immediate = "";
 
-    public Lui(String[] binary) {
+    public Lui(String binary) {
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 2) {
             this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0], false);

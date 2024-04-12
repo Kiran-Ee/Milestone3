@@ -1,7 +1,7 @@
 package Operations;
 
 import MachineCode.GeneralMachineCode;
-import Util.General;
+
 
 public class Lw implements Operation {
     private final String opcode = "100011";
@@ -17,7 +17,7 @@ LW rt, offset(base)
     [LW(6: 100011), base(5), rt(5), offset(16)]
 Desc: rt <--memory[base+offset]
      */
-    public Lw(String[] binary){
+    public Lw(String binary){
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
             this.base = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0], false);

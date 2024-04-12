@@ -8,8 +8,8 @@ import static org.junit.Assert.*;
 // op-code: add, rd, rs, rt
 // machine-code: sp, rs, rt, rd, 0, add
 public class AddTest {
-    String hex_instr1 = "022F802"; // "add", "$s0", "$s1", "$t7"
-    String[] expMnem = new String[]{"add{opcode: ," + "rs: " + "rt "+ "rd" +"}"};
+    String hex_instr1 = "022F802"; // "add", "$s0", "$s1", "$t7"  --at least 3 of each- random -test $a0 or $5
+    String expMnem = "add{opcode: ," + "rs: " + "rt "+ "rd" +"}";
     String instr2 = "01084020"; //"add", "$t0", "$t0", "$t0"
 
 //    String[] instr3 = {"add", "$t3", "$t2", "$t1"};

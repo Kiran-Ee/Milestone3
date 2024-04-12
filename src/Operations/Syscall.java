@@ -1,6 +1,6 @@
 package Operations;
 
-import Util.General;
+
 
 public class Syscall implements Operation{
     private final String opcode = "000000";
