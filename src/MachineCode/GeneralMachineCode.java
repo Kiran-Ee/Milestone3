@@ -2,6 +2,8 @@ package MachineCode;
 
 import Operations.*;
 
+import java.math.BigInteger;
+
 public class GeneralMachineCode {
     public String hex_to_mnenomic(String hex) {
         String bin = hex_to_binary(hex);
@@ -69,16 +71,33 @@ public class GeneralMachineCode {
         return binary;
     }
 
-    // TODO: this method probs needs to handle "unsigned" since java's methods automatically interpret as "signed" ... use "General"'s method bc very similar.
     public static String bin_toHexImmediate(String bin_imm) {
-        int decimal = Integer.parseInt(bin_imm, 2);
+        int padding = 4 - (bin_imm.length() % 4);
+        if (padding != 4) // Ensure the length of the binary string is a multiple of 4 by padding with leading zeros
+            bin_imm = "0".repeat(padding) + bin_imm;
 
-        String hex = Integer.toHexString(decimal);
 
-        int padding = 8 - hex.length();
-        hex = pad_binary(hex, padding);
+        String hexBuilder = "";
 
-        return hex;
+        for (int i = 0; i < bin_imm.length(); i += 4) {
+            String group = bin_imm.substring(i, i + 4);
+
+            BigInteger dec_unsigned = new BigInteger(group, 2);
+
+            hexBuilder+= dec_unsigned.toString(16);
+        }
+
+        return hexBuilder.toLowerCase();
+
+        // JAVA's METHOD ASSUMES SINGED BUT WE NEED IT TO WORK FOR UNSIGNED ... THE 'literal" TRANSFORMATION FROM BIN TO HEX!
+//        int decimal = Integer.parseInt(bin_imm, 2);
+//
+//        String hex = Integer.toHexString(decimal);
+//
+//        int padding = 8 - hex.length();
+//        hex = pad_binary(hex, padding);
+//
+//        return hex;
     }
 
     public static String pad_binary(String binary_instr, int num_padding) {
