@@ -6,27 +6,26 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class InstructionFactoryTest {
     GeneralMachineCode gmc = new GeneralMachineCode();
-    String[] bin1 = new String[]{"00000010101101001110100000100010","sub"}; // "02b4e822"
-    String[] bin2 = new String[]{"00000000000000000000000000001100","syscall"}; // "0000000c"
-    String[] bin3 = new String[]{"00000010011110110100100000100010","sub"}; // "027b4822"
-    String[] bin4 = new String[]{"00110100000100111111111100100000","ori"}; // "3413ff20"
-    String[] bin5 = new String[]{"00010001111111100000000011011111","beq"}; // "117e00df"
-    String[] bin6 = new String[]{"00000011000010100000100000100000","add"}; // "030a0820"
-    String[] bin7 = new String[]{"00010011011010101111111110101110","beq"}; // "136affae"
-    String[] bin8 = new String[]{"00010000010001000000000000010111","beq"}; // "10440017"
-    String[] bin9 = new String[]{"00001000000000000000000011001101","j"}; // "080000cd"
-    String[] bin10 = new String[]{"10101110100101000000000000000000","sw"}; // "ae940000"
-    String[] bin11 = new String[]{"00110111010100110000000010101110","ori"}; // "375300ae"
-    String[] bin12 = new String[]{"00000000000000000000000000001100","syscall"}; // "0000000c"
-    String[] bin13 = new String[]{"00000000110111111110000000101010","slt"}; // "00dfe02a"
+    String[] bin1 = new String[]{"00000010101101001110100000100010", "sub"}; // "02b4e822"
+    String[] bin2 = new String[]{"00000000000000000000000000001100", "syscall"}; // "0000000c"
+    String[] bin3 = new String[]{"00000010011110110100100000100010", "sub"}; // "027b4822"
+    String[] bin4 = new String[]{"00110100000100111111111100100000", "ori"}; // "3413ff20"
+    String[] bin5 = new String[]{"00010001011111100000000011011111", "beq"}; // "117e00df"
+    String[] bin6 = new String[]{"00000011000010100000100000100000", "add"}; // "030a0820"
+    String[] bin7 = new String[]{"00010011011010101111111110101110", "beq"}; // "136affae"
+    String[] bin8 = new String[]{"00010000010001000000000000010111", "beq"}; // "10440017"
+    String[] bin9 = new String[]{"00001000000000000000000011001101", "j"}; // "080000cd"
+    String[] bin10 = new String[]{"10101110100101000000000000000000", "sw"}; // "ae940000"
+    String[] bin11 = new String[]{"00110111010100110000000010101110", "ori"}; // "375300ae"
+    String[] bin12 = new String[]{"00000000000000000000000000001100", "syscall"}; // "0000000c"
+    String[] bin13 = new String[]{"00000000110111111110000000101010", "slt"}; // "00dfe02a"
     String[] bin14 = {"00100100111010100000000000000001", "addiu"}; // "24ea0001"
     String[] bin15 = {"00010101010101010101010000010000", "bne"}; // "15555410"
-    String[] bin16 = {"00111100000110001001000000000000", "lui"}; // "3c180993"
+    String[] bin16 = {"00111100000110000000100110010011", "lui"}; // "3c180993"
     String[] bin17 = {"10001100011001110000000000000001", "lw"}; // "8c670001"
-    String[] bin18 = {"00000001001010011010000000100100", "and"}; // "01294024"
+    String[] bin18 = {"00000001001010010100000000100100", "and"}; // "01294024"
     String[] bin19 = {"00000000001101001000000100100101", "or"}; // "00348125"
     String[] bin20 = {"10111111110111110101101110011001", "random"}; // "bfdf5b99"
-
 
 
     String instr1 = "sub {opcode: 00, rs: 15, rt: 14, rd: 1d, shmt: 00, funct: 22}";
@@ -42,7 +41,7 @@ class InstructionFactoryTest {
     String instr11 = "ori {opcode: 0d, rs(base): 1a, rt: 13, immediate(offset): 00ae}";
     String instr12 = "syscall {opcode: 00, code: 000000, funct: 0c}";
     String instr13 = "slt {opcode: 00, rs: 06, rt: 1f, rd: 1c, shmt: 00, funct: 2a}";
-    String instr14 = "addiu {opcode: 09, rs(base): 03, rt: 06, immediate(offset): 00e0}"; //24ea0001
+    String instr14 = "addiu {opcode: 09, rs(base): 07, rt: 0a, immediate(offset): 0001}"; //24ea0001
     String instr15 = "bne {opcode: 05, rs(base): 0a, rt: 15, immediate(offset): 5410}"; //15555410
     String instr16 = "lui {opcode: 0f, rs(base): 00, rt: 18, immediate(offset): 0993}"; //3c180993
     String instr17 = "lw {opcode: 23, rs(base): 03, rt: 07, immediate(offset): 0001}"; //8c670001
@@ -66,41 +65,42 @@ class InstructionFactoryTest {
 
     @Test
     void setBin2() {
-        assertEquals(instr2, gmc.instruction_factory(bin2[0], bin2[2]));
+        assertEquals(instr2, gmc.instruction_factory(bin2[0], bin2[1]));
     }
 
     @Test
     void setBin3() {
-        assertEquals(instr3, gmc.instruction_factory(bin3[0], bin3[3]));
+        assertEquals(instr3, gmc.instruction_factory(bin3[0], bin3[1]));
     }
 
     @Test
     void setBin4() {
-        assertEquals(instr4, gmc.instruction_factory(bin4[0], bin4[4]));
+        assertEquals(instr4, gmc.instruction_factory(bin4[0], bin4[1]));
     }
 
     @Test
     void setBin5() {
-        assertEquals(instr5, gmc.instruction_factory(bin5[0], bin5[5]));
+        assertEquals(instr5, gmc.instruction_factory(bin5[0], bin5[1]));
     }
 
     @Test
     void setBin6() {
-        assertEquals(instr6, gmc.instruction_factory(bin6[0], bin6[6]));
+        assertEquals(instr6, gmc.instruction_factory(bin6[0], bin6[1]));
     }
 
     @Test
     void setBin7() {
-        assertEquals(instr7, gmc.instruction_factory(bin7[0], bin7[7]));
+        assertEquals(instr7, gmc.instruction_factory(bin7[0], bin7[1]));
     }
 
     @Test
     void setBin8() {
-        assertEquals(instr8, gmc.instruction_factory(bin8[0], bin8[8]));
+        assertEquals(instr8, gmc.instruction_factory(bin8[0], bin8[1]));
     }
+
     @Test
     void setBin9() {
-        assertEquals(instr9, gmc.instruction_factory(bin9[0], bin9[9]));
+        assertEquals(instr9, gmc.instruction_factory(bin9[0], bin9[1]));
     }
 
     @Test
@@ -125,36 +125,37 @@ class InstructionFactoryTest {
 
     @Test
     void setBin14() {
-        assertEquals(instr7, gmc.instruction_factory(bin14[0], bin14[7]));
+        assertEquals(instr14, gmc.instruction_factory(bin14[0], bin14[1]));
     }
 
     @Test
     void setBin15() {
-        assertEquals(instr8, gmc.instruction_factory(bin15[0], bin15[8]));
+        assertEquals(instr15, gmc.instruction_factory(bin15[0], bin15[1]));
     }
+
     @Test
     void setBin16() {
-        assertEquals(instr9, gmc.instruction_factory(bin16[0], bin16[9]));
+        assertEquals(instr16, gmc.instruction_factory(bin16[0], bin16[1]));
     }
 
     @Test
     void setBin17() {
-        assertEquals(instr10, gmc.instruction_factory(bin17[0], bin17[1]));
+        assertEquals(instr17, gmc.instruction_factory(bin17[0], bin17[1]));
     }
 
     @Test
     void setBin18() {
-        assertEquals(instr11, gmc.instruction_factory(bin18[0], bin18[1]));
+        assertEquals(instr18, gmc.instruction_factory(bin18[0], bin18[1]));
     }
 
     @Test
     void setBin19() {
-        assertEquals(instr12, gmc.instruction_factory(bin19[0], bin19[1]));
+        assertEquals(instr19, gmc.instruction_factory(bin19[0], bin19[1]));
     }
 
     @Test
     void setBin20() {
-        assertEquals(instr13, gmc.instruction_factory(bin20[0], bin20[1]));
+        assertThrows(IllegalArgumentException.class, () -> gmc.instruction_factory(bin20[0], bin20[1]));
     }
 
 }

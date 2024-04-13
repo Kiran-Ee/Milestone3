@@ -3,24 +3,26 @@ package Operations;
 import MachineCode.GeneralMachineCode;
 
 
-public class Sub implements Operation{
+public class Sub implements Operation {
     GeneralMachineCode gmc = new GeneralMachineCode();
     private final String opcode = "00";
     private String rs = "";
     private String rt = "";
     private String rd = "";
-    private String shamt  = "00";
+    private String shamt = "00";
     private String funct = "22";
 
-    public Sub(String binary){
+    public Sub(String binary) {
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
             String rs_temp = gmc.bin_toHexImmediate(parsedInstruction[0]);
-            this.rs = gmc.pad_binary(rs_temp,2 - rs_temp.length());
+            this.rs = gmc.pad_binary(rs_temp, 2 - rs_temp.length());
+
             String rt_temp = gmc.bin_toHexImmediate(parsedInstruction[1]);
-            this.rt = gmc.pad_binary(gmc.bin_toHexImmediate(parsedInstruction[1]),2- rs_temp.length());
-            String rd_temp = gmc.bin_toHexImmediate(parsedInstruction[1]);
-            this.rd = gmc.pad_binary(gmc.bin_toHexImmediate(parsedInstruction[2]),2- rs_temp.length());
+            this.rt = gmc.pad_binary(rt_temp, 2 - rt_temp.length());
+
+            String rd_temp = gmc.bin_toHexImmediate(parsedInstruction[2]);
+            this.rd = gmc.pad_binary(rd_temp, 2 - rd_temp.length());
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }

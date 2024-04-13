@@ -6,21 +6,24 @@ import MachineCode.GeneralMachineCode;
 import java.util.Arrays;
 
 public class Addiu implements Operation{
-    private String opcode = "001001";
+    GeneralMachineCode gmc = new GeneralMachineCode();
+    private String opcode = "09";
     private String rs = "";
     private String rt = "";
-    private String immediate = "";
+    private String offset = "";
 
     public Addiu (String binary)
     {
-//        rs = cleaned_instructions[2]; //assuming the instance variables are Strings: registers
-//        rt = cleaned_instructions[1];
-//        immediate = cleaned_instructions[3];
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
-            this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
-            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1]);
-            this.immediate = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2] + parsedInstruction[3]);
+            String rs_temp = gmc.bin_toHexImmediate(parsedInstruction[0]);
+            this.rs = gmc.pad_binary(rs_temp, 2 - rs_temp.length());
+
+            String rt_temp = gmc.bin_toHexImmediate(parsedInstruction[1]);
+            this.rt = gmc.pad_binary(rt_temp, 2 - rt_temp.length());
+
+            String offset_temp = gmc.bin_toHexImmediate(parsedInstruction[2]);
+            this.offset = gmc.pad_binary(offset_temp, 4 - offset_temp.length());
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }
@@ -38,38 +41,12 @@ public class Addiu implements Operation{
     }
     @Override
     public String get_mnenomic() {
-        return String.format("addiu {opcode: %s, rs(base): %s, rt: %s, immediate: %s}",
-                opcode, rs, rt, immediate);
+        return String.format("addiu {opcode: %s, rs(base): %s, rt: %s, immediate(offset): %s}",
+                opcode, rs, rt, offset);
     }
 
     @Override
     public String[] getInstruction() {
-        return new String[]{opcode, rs, rt, immediate};
+        return new String[]{opcode, rs, rt, offset};
     }
-//    public String get_hex()
-//    {
-//        String rs_binary = General.register_to_binary(rs);
-//        String rt_binary = General.register_to_binary(rt);
-//        String immediate_hex = General.immediate_to_hex(immediate, false);
-//
-//        String com = ADDIU + rs_binary + rt_binary;
-//
-//        int com_dec = Integer.parseInt(com,2);
-//
-//        String com_hex = Integer.toHexString(com_dec) + immediate_hex;
-//
-//        return com_hex;
-//    }
-//
-//    @Override
-//    public String get_mnenomic() {
-//        return String.format("addiu {opcode: %s, rs: %s, rt: %s, immediate: %s}",
-//                opcode, rs, rt, immediate);
-//
-//    }
-//
-//    public String[] getInstruction()
-//    {
-//        return new String[]{opcode, rs, rt, immediate};
-//    }
 }

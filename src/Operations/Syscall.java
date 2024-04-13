@@ -3,9 +3,9 @@ package Operations;
 
 
 public class Syscall implements Operation{
-    private final String opcode = "000000";
-    // private String code;
-    private final String funct = "001100";
+    private final String opcode = "00";
+    private String code = "000000";
+    private final String funct = "0c";
 
     public Syscall(){
         // may not be needed any additional parsings for syscall
@@ -19,7 +19,7 @@ public class Syscall implements Operation{
 
     @Override
     public String get_mnenomic() {
-        return "syscall";
+        return "syscall {opcode: 00, code: 000000, funct: 0c}"; // hardcoded
     }
 
     @Override

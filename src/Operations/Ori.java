@@ -3,7 +3,7 @@ package Operations;
 import MachineCode.GeneralMachineCode;
 
 public class Ori implements Operation{
-    private final String opcode = "001101";
+    private final String opcode = "0d";
     private String rs = "";
     private String rt = "";
     private String immediate = "";
@@ -34,7 +34,7 @@ public class Ori implements Operation{
 
     @Override
     public String get_mnenomic() {
-        return String.format("ori {opcode: %s, rs: %s, rt: %s, immediate: %s}",
+        return String.format("ori {opcode: %s, rs(base): %s, rt: %s, immediate(offset): %s}",
                 opcode, rs, rt, immediate);
     }
 

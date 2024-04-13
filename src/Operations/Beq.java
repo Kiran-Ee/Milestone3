@@ -1,7 +1,10 @@
 package Operations;
 
+import MachineCode.GeneralMachineCode;
+
 public class Beq implements Operation{
-    private final String opcode = "000100";
+    GeneralMachineCode gmc = new GeneralMachineCode();
+    private final String opcode = "04";
     private String rs = "";
     private String rt = "";
     private String offset = "";
@@ -9,13 +12,17 @@ public class Beq implements Operation{
     public Beq(String binary){
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
-            this.rs = parsedInstruction[0];
-            this.rt = parsedInstruction[1];
-            this.offset = parsedInstruction[2];
+            String rs_temp = gmc.bin_toHexImmediate(parsedInstruction[0]);
+            this.rs = gmc.pad_binary(rs_temp, 2 - rs_temp.length());
+
+            String rt_temp = gmc.bin_toHexImmediate(parsedInstruction[1]);
+            this.rt = gmc.pad_binary(rt_temp, 2 - rt_temp.length());
+
+            String offset_temp = gmc.bin_toHexImmediate(parsedInstruction[2]);
+            this.offset = gmc.pad_binary(offset_temp, 4 - offset_temp.length());
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }
-
     }
 
     @Override
@@ -33,7 +40,7 @@ public class Beq implements Operation{
 
     @Override
     public String get_mnenomic() {
-        return String.format("beq {opcode: %s, rs(base): %s, rt: %s, offset(imm): %s}",
+        return String.format("beq {opcode: %s, rs(base): %s, rt: %s, immediate(offset): %s}",
                 opcode, rs, rt, offset);
     }
 

@@ -3,7 +3,8 @@ package Operations;
 import MachineCode.GeneralMachineCode;
 
 public class Bne implements Operation{
-    private final String opcode = "000101";
+    GeneralMachineCode gmc = new GeneralMachineCode();
+    private final String opcode = "05";
     private String rs = "";
     private String rt = "";
     private String offset = "";
@@ -11,9 +12,14 @@ public class Bne implements Operation{
     public Bne(String binary){
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
-            this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
-            this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1]);
-            this.offset = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2]);
+            String rs_temp = gmc.bin_toHexImmediate(parsedInstruction[0]);
+            this.rs = gmc.pad_binary(rs_temp, 2 - rs_temp.length());
+
+            String rt_temp = gmc.bin_toHexImmediate(parsedInstruction[1]);
+            this.rt = gmc.pad_binary(rt_temp, 2 - rt_temp.length());
+
+            String offset_temp = gmc.bin_toHexImmediate(parsedInstruction[2]);
+            this.offset = gmc.pad_binary(offset_temp, 4 - offset_temp.length());
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }
@@ -33,7 +39,7 @@ public class Bne implements Operation{
 
     @Override
     public String get_mnenomic() {
-        return String.format("bne {opcode: %s, rs(base): %s, rt: %s, offset(imm): %s}", opcode, rs, rt, offset);
+        return String.format("bne {opcode: %s, rs(base): %s, rt: %s, immediate(offset): %s}", opcode, rs, rt, offset);
     }
 
     @Override

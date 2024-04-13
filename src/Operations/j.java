@@ -4,13 +4,15 @@ import MachineCode.GeneralMachineCode;
 
 
 public class j implements Operation {
-    private String opcode = "000010"; //opcode for j instruction
+    GeneralMachineCode gmc = new GeneralMachineCode();
+    private String opcode = "02"; //opcode for j instruction
     private String instr_index;
 
     public j(String binary){
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 1) {
-            this.instr_index = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
+            String instr_index_temp = gmc.bin_toHexImmediate(parsedInstruction[0]);;
+            this.instr_index = gmc.pad_binary(instr_index_temp, 7-instr_index_temp.length());
         } else {
             throw new IllegalArgumentException("Invalid binary instruction format.");
         }
@@ -28,7 +30,7 @@ public class j implements Operation {
 
     @Override
     public String get_mnenomic() {
-        return String.format("j {opcode: %s, instr_index(imm): %s}", opcode, instr_index);
+        return String.format("j {opcode: %s, index: %s}", opcode, instr_index);
     }
 
     @Override
