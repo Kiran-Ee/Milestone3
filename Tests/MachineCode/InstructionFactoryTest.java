@@ -26,6 +26,7 @@ class InstructionFactoryTest {
     String[] bin18 = {"00000001001010010100000000100100", "and"}; // "01294024"
     String[] bin19 = {"00000000001101001000000100100101", "or"}; // "00348125"
     String[] bin20 = {"10111111110111110101101110011001", "random"}; // "bfdf5b99"
+    String[] bin21 = {"00110010011110011111111100010010", "andi"}; // "3279ff12"
 
 
     String instr1 = "sub {opcode: 00, rs: 15, rt: 14, rd: 1d, shmt: 00, funct: 22}";
@@ -47,7 +48,8 @@ class InstructionFactoryTest {
     String instr17 = "lw {opcode: 23, rs(base): 03, rt: 07, immediate(offset): 0001}"; //8c670001
     String instr18 = "and {opcode: 00, rs: 09, rt: 09, rd: 08, shmt: 00, funct: 24}"; //01294024
     String instr19 = "or {opcode: 00, rs: 01, rt: 14, rd: 10, shmt: 00, funct: 25}"; //00348125
-    String instr20 = "Unknown instruction"; //bfdf5b99
+    String instr20 = "Unknown instruction"; // not used.
+    String instr21 = "andi {opcode: 0c, rs(base): 13, rt: 19, immediate(offset): ff12}"; //bfdf5b99
 //
 //    String[] bin14 = {"24ea0001", "addiu"}; // addiu t2, a3, 0x1
 //    String[] bin15 = {"15555410", "bne"}; // bne t1, t2, 0xAF10
@@ -158,6 +160,10 @@ class InstructionFactoryTest {
         assertThrows(IllegalArgumentException.class, () -> gmc.instruction_factory(bin20[0], bin20[1]));
     }
 
+    @Test
+    void setBin21() {
+        assertEquals(instr21, gmc.instruction_factory(bin21[0], bin21[1]));
+    }
 }
 
 /* keeping this bc asked GPT to convert all hex's in binary and it may have done it wrong ...
