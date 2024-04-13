@@ -100,6 +100,8 @@ public class GeneralMachineCode {
 //        return hex;
     }
 
+    // num_padding MUST be the difference between current length and desired length ... it is NOT the total length
+    // Ex: binary_instr = "101", num_pad = 3 -> return "000101"
     public static String pad_binary(String binary_instr, int num_padding) {
         for (int i = 0; i < num_padding; i++) {
             binary_instr = "0" + binary_instr;
