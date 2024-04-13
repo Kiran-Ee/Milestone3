@@ -64,11 +64,11 @@ public class GeneralMachineCode {
     }
 
     public String hex_to_binary(String hex) {
-        int decimal = Integer.parseInt(hex, 16);
-        String binary = Integer.toBinaryString(decimal);
-        int padding = 32 - binary.length();
-        binary = pad_binary(binary, padding);
-        return binary;
+        BigInteger dec = new BigInteger(hex, 16);
+        String bin = dec.toString(2);
+
+        int padding = 32 - bin.length();
+        return pad_binary(bin, padding);
     }
 
     public static String bin_toHexImmediate(String bin_imm) {
