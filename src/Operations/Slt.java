@@ -11,7 +11,7 @@ public class Slt implements Operation{
 
     public Slt(String binary){
         String[] parsedInstruction = binary_parser(binary);
-        if (parsedInstruction.length == 4) {
+        if (parsedInstruction.length == 3) {
             this.rs = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
             this.rt = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[1]);
             this.rd = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[2]);

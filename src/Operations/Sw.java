@@ -3,13 +3,13 @@ package Operations;
 import MachineCode.GeneralMachineCode;
 
 
-public class Sw implements Operation{
+public class Sw implements Operation {
     private final String opcode = "101011";
     private String base = "";
     private String rt = "";
     private String offset = "";
 
-    public Sw(String binary){
+    public Sw(String binary) {
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
             this.base = GeneralMachineCode.bin_toHexImmediate(parsedInstruction[0]);
