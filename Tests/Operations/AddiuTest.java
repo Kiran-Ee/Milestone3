@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 // op-code: addiu, rt, rs, immediate
-// machine-code: sp, rs, rt, immediate
+// machine-code: sp, rs, rt, immediate.
 
 public class AddiuTest {
     String bin_instr1 = "00100110111110110000000000111110"; //addiu", "$s0", "$s1", "10- -26fb003e
