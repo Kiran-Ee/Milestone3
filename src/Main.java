@@ -26,6 +26,7 @@ public class Main {
                 GeneralMachineCode gmc = new GeneralMachineCode();
                 String actual_mnenomic = gmc.hex_to_mnenomic(hex_instr);
 
+                System.out.println("Counter " + debugcounter);
                 if (actual_mnenomic.equals(exp_mnenomic)) {
                     System.out.println("+++ Verification passed for: " + line);
                     totalPassed++;

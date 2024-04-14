@@ -28,6 +28,8 @@ class InstructionFinderTest {
     String bin18 = "00000001001010100100100000100100"; //and t1 t1 t2
     String bin19 = "00000000110000100010100000100101"; //or a1 a2 v0
     String bin20 = "10111110111110101110101110011001"; //random
+    String bin21 = "00110010000100010000000000111001"; //ANDI $s1 $s0 0x0039
+
 
     String instr1 = "sub";
     String instr2 = "syscall";
@@ -49,6 +51,7 @@ class InstructionFinderTest {
     String instr18 = "and"; //and t1 t1 t2
     String instr19 = "or"; //or a1 a2 v0
     String instr20 = "Unknown instruction"; //random
+    String instr21 = "andi"; //ANDI $s1 $s0 0x0039
 
     @Test
     void setBin1() {
@@ -149,4 +152,9 @@ class InstructionFinderTest {
     void setBin20() {
         assertEquals(instr20, gmc.instruction_finder(bin20));
     }
+
+    @Test
+    void setBin21() {
+        assertEquals(instr21, gmc.instruction_finder(bin21));
+    } //profs test
 }

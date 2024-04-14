@@ -16,6 +16,7 @@ public class GeneralMachineCode {
         return switch (op_code) {
             case "000000" -> rType_finder(bin);
             case "001001" -> "addiu";
+            case "001100" -> "andi";
             case "000100" -> "beq";
             case "000101" -> "bne";
             case "000010" -> "j";
