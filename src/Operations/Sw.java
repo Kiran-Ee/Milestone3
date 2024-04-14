@@ -6,7 +6,7 @@ import MachineCode.GeneralMachineCode;
 public class Sw implements Operation {
     GeneralMachineCode gmc = new GeneralMachineCode();
     private final String opcode = "2b";
-    private String rs = "";
+    private String base = "";
     private String rt = "";
     private String offset = "";
 
@@ -14,7 +14,7 @@ public class Sw implements Operation {
         String[] parsedInstruction = binary_parser(binary);
         if (parsedInstruction.length == 3) {
             String rs_temp = gmc.bin_toHexImmediate(parsedInstruction[0]);
-            this.rs = gmc.pad_binary(rs_temp, 2 - rs_temp.length());
+            this.base = gmc.pad_binary(rs_temp, 2 - rs_temp.length());
 
             String rt_temp = gmc.bin_toHexImmediate(parsedInstruction[1]);
             this.rt = gmc.pad_binary(rt_temp, 2 - rt_temp.length());
@@ -41,36 +41,12 @@ public class Sw implements Operation {
 
     @Override
     public String get_mnenomic() {
-        return String.format("sw {opcode: %s, rs(base): %s, rt: %s, immediate(offset): %s}", opcode, rs, rt, offset);
+        return String.format("sw {opcode: %s, base: %s, rt: %s, offset: %s}", opcode, base, rt, offset);
     }
 
     @Override
     public String[] getInstruction() {
-        return new String[]{opcode, rs, rt, offset};
+        return new String[]{opcode, base, rt, offset};
     }
 
-
-//    public Sw(String[] cleaned_instr)
-//    {
-//        rt = cleaned_instr[1];
-//        base = cleaned_instr[3];
-//        offset = cleaned_instr[2];
-//    }
-//    public String get_hex() {
-//        String base_binary = General.register_to_binary(base);
-//        String rt_binary = General.register_to_binary(rt);
-//        String offset_hex = General.immediate_to_hex(offset, true);
-//
-//        String com = SW + base_binary + rt_binary;
-//
-//        int com_dec = Integer.parseInt(com,2);
-//
-//        String com_hex = Integer.toHexString(com_dec) + offset_hex;
-//
-//        return com_hex;
-//    }
-//    public String[] getInstruction()
-//    {
-//        return new String[]{SW, base, rt, offset};
-//    }
 }

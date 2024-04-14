@@ -7,15 +7,15 @@ import static org.junit.Assert.assertEquals;
 public class SubTest {
     // Binary instruction for "sub", "$s1", "$s2", "$s3" - hex-02538822
     String bin_instr1 = "00000010010100111000100000100010";
-    String expMnem1 = "sub {opcode: 000000, rs: 10010, rt: 10010, rd: 10001, shamt: 00000, funct: 100010}";
+    String expMnem1 = "sub {opcode: 00, rs: 12, rt: 13, rd(base): 11, shamt: 00, funct: 22}";
 
     // Binary instruction for "sub", "$t0", "$t1", "$t2" - hex-012A4022
     String bin_instr2 = "00000001001010100100000000100010";
-    String expMnem2 = "sub {opcode: 000000, rs: 01001, rt: 01010, rd: 01000, shamt: 00000, funct: 100010}";
+    String expMnem2 = "sub {opcode: 00, rs: 09, rt: 0a, rd(base): 08, shamt: 00, funct: 22}";
 
     // Binary instruction for "sub", "$s6", "$s7", "$a3" - hex-02E7B022
     String bin_instr3 = "00000010111001111011000000100010";
-    String expMnem3 = "sub {opcode: 000000, rs: 11111, rt: 11100, rd: 11110, shamt: 00000, funct: 100010";
+    String expMnem3 = "sub {opcode: 00, rs: 17, rt: 07, rd(base): 16, shamt: 00, funct: 22}";
 
     @Test
     public void good_variable_instr1() {
