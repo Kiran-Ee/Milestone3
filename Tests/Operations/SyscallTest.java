@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class SyscallTest {
-    String expMnem = "syscall";
+    String expMnem = "syscall {opcode: 00, code: 000000, funct: 0c}";
 //    String expInst = "000000001100";
 //    String bin_inst = "000000XXXXXXXXXXXXXXXXXXXX001100"; //hex-0XXXXXXC
 
