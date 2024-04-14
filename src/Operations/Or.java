@@ -42,7 +42,7 @@ public class Or implements Operation {
 
     @Override
     public String get_mnenomic() {
-        return String.format("or {opcode: %s, rs: %s, rt: %s, rd(base): %s, shamt: %s, funct: %s}",
+        return String.format("or {opcode: %s, rs: %s, rt: %s, rd: %s, shmt: %s, funct: %s}",
                 opcode, rs, rt, rd, shamt, funct);
     }
 

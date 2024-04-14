@@ -41,7 +41,7 @@ public class Sw implements Operation {
 
     @Override
     public String get_mnenomic() {
-        return String.format("sw {opcode: %s, base: %s, rt: %s, offset: %s}", opcode, base, rt, offset);
+        return String.format("sw {opcode: %s, rs(base): %s, rt: %s, immediate(offset): %s}", opcode, base, rt, offset);
     }
 
     @Override

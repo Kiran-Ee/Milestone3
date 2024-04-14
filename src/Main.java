@@ -1,6 +1,8 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 
+import MachineCode.GeneralMachineCode;
+
 import java.io.*;
 import java.math.BigInteger;
 import java.security.spec.RSAOtherPrimeInfo;
@@ -8,17 +10,34 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        String bin = "1111111111111111111111111111111";
-        int decimalValue = Integer.parseInt(bin, 2); //interprets binary as "unsigned" but only in 32 bits
-        System.out.println(decimalValue);
-// making comment for pushing to git
+        String filePath = "src/Profs_Test_File";
+        int totalPassed = 0;
+        int debugcounter = 0; // for conditional breakpoints ...
 
+        try (FileReader fileReader = new FileReader(filePath); BufferedReader bufferReader = new BufferedReader(fileReader)) {
+            String line;
+            while ((line = bufferReader.readLine()) != null) {
+                debugcounter++;
+                String[] parts = line.split(" ", 2); //find at most 2 parts of the string seperated by space
 
-//        String hexString_forSureSigned = "f";
-//        // String hexString_forSureSigned = "FFFFFFFF"; // .parseInt() doesn't like 2^32! bc outside signed range
-//        String hexString_hopefullyUnigned = "FFFFFFFF";
-//        BigInteger unsignedValue = new BigInteger(hexString_hopefullyUnigned, 16); //interprets leading "1" as unsigned!!!!
-//        System.out.println(Integer.parseInt(hexString_forSureSigned, 16));
-//        System.out.println(unsignedValue); // Output: 4294967295
+                String hex_instr = parts[0];
+                String exp_mnenomic = parts[1];
+
+                GeneralMachineCode gmc = new GeneralMachineCode();
+                String actual_mnenomic = gmc.hex_to_mnenomic(hex_instr);
+
+                if (actual_mnenomic.equals(exp_mnenomic)) {
+                    System.out.println("+++ Verification passed for: " + line);
+                    totalPassed++;
+                } else {
+                    System.out.println("--- Verification failed for: " + line);
+                    System.out.println("   Expected: " + exp_mnenomic);
+                    System.out.println("   Actual: " + actual_mnenomic);
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException("Error opening file: " + filePath, e);
+        }
+        System.out.println("Total Passed: " + totalPassed + " out of 1000");
     }
 }
